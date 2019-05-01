@@ -1,5 +1,9 @@
 package com.company;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Book {
 
     private String title;
@@ -7,7 +11,8 @@ public class Book {
     private String description;
     private double price;
     private boolean isInStock;
-
+    private double adder;
+    private ArrayList<String> noStock = new ArrayList<>();
 
     public Book() {
     }
@@ -21,6 +26,17 @@ public class Book {
     }
 
 
+    public double priceCheck(HashMap<Integer, Book> booklist){
+        for (Book book: booklist.values()){
+            if (book.isInStock()){
+                setAdder(getAdder() + book.getPrice());
+            } else {
+                noStock.add(book.getTitle());
+            }
+        }
+        return getAdder();
+    }
+
     public void getDisplayText(){
         System.out.println(getTitle());
         System.out.println(getAuthor());
@@ -30,7 +46,11 @@ public class Book {
         System.out.println();
     }
 
-
+    public void getNoStockText(){
+        for(String book : noStock){
+            System.out.print(book + ", ");
+        }
+    }
 
 
 
@@ -79,5 +99,21 @@ public class Book {
 
     public void setInStock(boolean inStock) {
         isInStock = inStock;
+    }
+
+    public double getAdder() {
+        return adder;
+    }
+
+    public void setAdder(double adder) {
+        this.adder = adder;
+    }
+
+    public ArrayList<String> getNoStock() {
+        return noStock;
+    }
+
+    public void setNoStock(ArrayList<String> noStock) {
+        this.noStock = noStock;
     }
 }
