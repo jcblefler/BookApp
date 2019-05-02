@@ -10,18 +10,20 @@ public class Book {
     private String description;
     private double price;
     private boolean isInStock;
+    private String sku;
     private double adder;
     private ArrayList<String> noStock = new ArrayList<>();
 
     public Book() {
     }
 
-    public Book(String title, String author, String description, double price, boolean isInStock) {
+    public Book(String title, String author, String description, double price, boolean isInStock, String sku) {
         this.title = title;
         this.author = author;
         this.description = description;
         this.price = price;
         this.isInStock = isInStock;
+        this.sku = sku;
     }
 
 
@@ -42,6 +44,7 @@ public class Book {
         System.out.println(getDescription());
         System.out.println(getPrice());
         System.out.println(isInStock());
+        System.out.println(getSku());
         System.out.println();
     }
 
@@ -98,6 +101,14 @@ public class Book {
 
     public void setInStock(boolean inStock) {
         isInStock = inStock;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
     public double getAdder() {
